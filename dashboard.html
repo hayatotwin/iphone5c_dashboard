@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 5c</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e;
+            color: white;
+            font-family: -apple-system, sans-serif;
+            width: 320px;
+            height: 568px;
+        }
+        .clock {
+            text-align: center;
+            padding-top: 200px;
+        }
+        #time {
+            font-size: 60px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+        #date {
+            font-size: 20px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div id="time">00:00:00</div>
+        <div id="date">2026年1月1日</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // 時刻
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('time').textContent = 
+                hours + ':' + minutes + ':' + seconds;
+
+            // 日付
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            document.getElementById('date').textContent =
+                year + '年' + month + '月' + day + '日';
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
